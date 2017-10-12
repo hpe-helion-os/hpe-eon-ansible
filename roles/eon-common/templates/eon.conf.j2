@@ -29,13 +29,15 @@ rabbit_hosts = "{{ rabbit_hosts }}"
 rabbit_use_ssl = "{{ rabbit_use_ssl }}"
 
 [keystone_authtoken]
-admin_tenant_name = "{{ eon_admin_tenant_name }}"
-admin_password = "{{ eon_admin_password }}"
-admin_user = "{{ eon_admin_user }}"
-auth_uri = "{{ keystone_auth_uri }}"
-identity_uri = "{{ keystone_identity_uri }}"
-endpoint_type = "{{ eon_endpoint_type }}"
-ca_certificates_file = "{{ eon_ca_certificates_file }}"
+auth_type = v3password
+auth_url = {{ keystone_auth_uri }}/v3
+auth_uri = {{ keystone_auth_uri }}/v3
+project_domain_name = Default
+project_name = {{ eon_admin_tenant_name }}
+user_domain_name = Default
+username = {{ eon_admin_user }}
+password = {{ eon_admin_password }}
+cafile = {{ eon_ca_certificates_file }}
 
 # Network driver
 [network]
